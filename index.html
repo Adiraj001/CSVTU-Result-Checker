@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSVTU Student Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="card">
+    <div class="header">
+        <h2>CSVTU Student Portal</h2>
+        <p>Result & Admit Card Redirect</p>
+    </div>
+
+    <form id="portalForm">
+        <div class="field">
+            <label>Roll Number</label>
+            <input type="text" id="roll" placeholder="Enter 12-digit Roll No" required maxlength="12">
+        </div>
+
+        <div id="errorMessage" class="error" style="display: none;"></div>
+
+        <div class="field">
+            <label>Action</label>
+            <select id="action" required>
+                <option value="">Select</option>
+                <option value="result">View Result</option>
+                <option value="admit">View Admit Card</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Exam Type</label>
+            <select id="exam_type">
+                <option value="regular">Regular</option>
+                <option value="rtrv">RTRV</option>
+                <option value="backlog">Backlog</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Semester</label>
+            <select id="semester" required>
+                <option value="">Select Semester</option>
+                <option value="1 Semester">1 Semester</option>
+                <option value="2 Semester">2 Semester</option>
+                <option value="3 Semester">3 Semester</option>
+                <option value="4 Semester">4 Semester</option>
+                <option value="5 Semester">5 Semester</option>
+            </select>
+        </div>
+
+        <div class="field">
+            <label>Exam Session</label>
+            <select id="exam_session" required>
+                <option value="">Select Exam Session</option>
+                <option value="Apr-May 2024">Apr-May 2024</option>
+                <option value="Nov-Dec 2024">Nov-Dec 2024</option>
+                <option value="Apr-May 2025">Apr-May 2025</option>
+                <option value="Nov-Dec 2025">Nov-Dec 2025</option>
+            </select>
+        </div>
+
+        <button type="submit">Open Official Page</button>
+
+        <div class="footer-note">
+            Redirects to official CSVTU website
+        </div>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
