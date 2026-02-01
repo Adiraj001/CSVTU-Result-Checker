@@ -1,74 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSVTU Student Portal</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSVTU Student Portal</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="card">
     <div class="header">
-        <h2>CSVTU Student Portal</h2>
+        <h1>CSVTU Student Portal</h1>
         <p>Result & Admit Card Redirect</p>
     </div>
 
-    <form id="portalForm">
-        <div class="field">
-            <label>Roll Number</label>
-            <input type="text" id="roll" placeholder="Enter 12-digit Roll No" required maxlength="12">
-        </div>
+    <div class="form-group">
+        <label for="rollNo">Roll Number</label>
+        <input type="text" id="rollNo" placeholder="Enter 12-digit Roll No" maxlength="12">
+    </div>
 
-        <div id="errorMessage" class="error" style="display: none;"></div>
+    <div class="form-group">
+        <label for="action">Action</label>
+        <select id="action">
+            <option value="">Select</option>
+            <option value="result">Result</option>
+            <option value="admit">Admit Card</option>
+        </select>
+    </div>
 
-        <div class="field">
-            <label>Action</label>
-            <select id="action" required>
-                <option value="">Select</option>
-                <option value="result">View Result</option>
-                <option value="admit">View Admit Card</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="examType">Exam Type</label>
+        <select id="examType">
+            <option value="Regular">Regular</option>
+            <option value="Backlog">Backlog</option>
+        </select>
+    </div>
 
-        <div class="field">
-            <label>Exam Type</label>
-            <select id="exam_type">
-                <option value="regular">Regular</option>
-                <option value="rtrv">RTRV</option>
-                <option value="backlog">Backlog</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="semester">Semester</label>
+        <select id="semester">
+            <option value="">Select Semester</option>
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+            <option value="4">4th</option>
+            <option value="5">5th</option>
+            <option value="6">6th</option>
+            <option value="7">7th</option>
+            <option value="8">8th</option>
+        </select>
+    </div>
 
-        <div class="field">
-            <label>Semester</label>
-            <select id="semester" required>
-                <option value="">Select Semester</option>
-                <option value="1 Semester">1 Semester</option>
-                <option value="2 Semester">2 Semester</option>
-                <option value="3 Semester">3 Semester</option>
-                <option value="4 Semester">4 Semester</option>
-                <option value="5 Semester">5 Semester</option>
-            </select>
-        </div>
+    <div class="form-group">
+        <label for="examMonth">Exam Month</label>
+   <select id="examMonth">
+            <option value="" disabled selected>Select Exam Month</option>
+        <option value="NOV-DEC">Nov&ndash;Dec</option>
+        <option value="APR-MAY">Apr&ndash;May</option>
+   </select>
 
-        <div class="field">
-            <label>Exam Session</label>
-            <select id="exam_session" required>
-                <option value="">Select Exam Session</option>
-                <option value="Apr-May 2024">Apr-May 2024</option>
-                <option value="Nov-Dec 2024">Nov-Dec 2024</option>
-                <option value="Apr-May 2025">Apr-May 2025</option>
-                <option value="Nov-Dec 2025">Nov-Dec 2025</option>
-            </select>
-        </div>
+    </div>
 
-        <button type="submit">Open Official Page</button>
+    <div class="form-group">
+        <label for="examYear">Exam Year</label>
+        <select id="examYear">
+            <option value="">Select Year</option>
+        </select>
+    </div>
 
-        <div class="footer-note">
-            Redirects to official CSVTU website
-        </div>
-    </form>
+    <button id="openBtn">Open Official Page</button>
+
+    <div class="footer-text">
+        Redirects to official CSVTU website
+    </div>
 </div>
 
 <script src="script.js"></script>
