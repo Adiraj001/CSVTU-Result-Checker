@@ -71,6 +71,13 @@ input:focus, select:focus {
     outline: none;
 }
 
+small {
+    display: block;
+    margin-top: 6px;
+    font-size: 12px;
+    color: #6b7280;
+}
+
 button {
     width: 100%;
     margin-top: 10px;

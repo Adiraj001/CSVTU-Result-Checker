@@ -17,6 +17,13 @@
     </div>
 
     <div class="form-group">
+        <label for="studentSearch">Student Name</label>
+        <input type="text" id="studentSearch" list="studentList" placeholder="Search student name">
+        <datalist id="studentList"></datalist>
+        <small id="studentStatus">Loading student list...</small>
+    </div>
+
+    <div class="form-group">
         <label for="rollNo">Roll Number</label>
         <input type="text" id="rollNo" placeholder="Enter 12-digit Roll No" maxlength="12">
     </div>
@@ -78,6 +85,7 @@
     </div>
 </div>
 
+<script src="DATA/studentdata.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
