@@ -1860,10 +1860,6 @@ window.STUDENT_DATA = [
     "rollNumber": "301310923014"
   },
   {
-    "name": "Aditya Raj Pandey",
-    "rollNumber": "301310923015"
-  },
-  {
     "name": "ADITYA SINGH",
     "rollNumber": "301310923016"
   },
