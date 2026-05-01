@@ -11,7 +11,6 @@ for (let year = currentYear; year >= 2015; year--) {
 
 // Button click handler
 document.getElementById("openBtn").addEventListener("click", () => {
-
     const rollNo = document.getElementById("rollNo").value.trim();
     const action = document.getElementById("action").value;
     const examType = document.getElementById("examType").value;
@@ -19,8 +18,7 @@ document.getElementById("openBtn").addEventListener("click", () => {
     const examMonth = document.getElementById("examMonth").value;
     const examYear = document.getElementById("examYear").value;
 
-    // Validation
-    if (!rollNo || rollNo.length !== 12) {
+    if (!/^\d{12}$/.test(rollNo)) {
         alert("Please enter a valid 12-digit roll number");
         return;
     }
@@ -30,12 +28,10 @@ document.getElementById("openBtn").addEventListener("click", () => {
         return;
     }
 
-    /* 🔥 CRITICAL FIXES 🔥 */
+    // Semester format: "5 Semester"
+    const semesterParam = `${semester} Semester`;
 
-    // Semester format: "1 SEMESTER"
-    const semesterParam = `${semester} SEMESTER`;
-
-    // Exam session format: "NOV-DEC 2023"
+    // Exam session format: "NOV-DEC 2025"
     const sessionParam = `${examMonth.toUpperCase()} ${examYear}`;
 
     let url = "";
@@ -46,5 +42,5 @@ document.getElementById("openBtn").addEventListener("click", () => {
         url = `https://csvtu.digivarsity.online/WebApp/AdmitCard/AdmitCard.aspx?S=${encodeURIComponent(semesterParam)}&E=${encodeURIComponent(sessionParam)}&R=${rollNo}&T=${examType}`;
     }
 
-    window.open(url, "_blank");
+    window.open(url, "_blank", "noopener,noreferrer");
 });
