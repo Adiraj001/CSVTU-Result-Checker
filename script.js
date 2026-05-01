@@ -2,6 +2,12 @@ const studentSearch = document.getElementById("studentSearch");
 const studentList = document.getElementById("studentList");
 const studentStatus = document.getElementById("studentStatus");
 const rollNoInput = document.getElementById("rollNo");
+const securityStatus = document.getElementById("securityStatus");
+const officialHost = "csvtu.digivarsity.online";
+const allowedActions = new Set(["result", "admit"]);
+const allowedExamTypes = new Set(["Regular", "RTRV", "Backlog"]);
+const allowedSemesters = new Set(["1", "2", "3", "4", "5", "6", "7", "8"]);
+const allowedExamMonths = new Set(["NOV-DEC", "APR-MAY"]);
 let students = [];
 
 function parseCsvLine(line) {
@@ -116,6 +122,8 @@ for (let year = currentYear; year >= 2015; year--) {
 
 // Button click handler
 document.getElementById("openBtn").addEventListener("click", () => {
+    securityStatus.textContent = "";
+
     const rollNo = rollNoInput.value.trim();
     const action = document.getElementById("action").value;
     const examType = document.getElementById("examType").value;
@@ -128,8 +136,8 @@ document.getElementById("openBtn").addEventListener("click", () => {
         return;
     }
 
-    if (!action || !semester || !examMonth || !examYear) {
-        alert("Please fill all fields");
+    if (!allowedActions.has(action) || !allowedExamTypes.has(examType) || !allowedSemesters.has(semester) || !allowedExamMonths.has(examMonth) || !/^\d{4}$/.test(examYear)) {
+        alert("Please select valid form values");
         return;
     }
 
@@ -139,13 +147,23 @@ document.getElementById("openBtn").addEventListener("click", () => {
     // Exam session format: "NOV-DEC 2025"
     const sessionParam = `${examMonth.toUpperCase()} ${examYear}`;
 
-    let url = "";
+    const pagePath = action === "result"
+        ? "/WebApp/Result/SemesterResult.aspx"
+        : "/WebApp/AdmitCard/AdmitCard.aspx";
 
-    if (action === "result") {
-        url = `https://csvtu.digivarsity.online/WebApp/Result/SemesterResult.aspx?S=${encodeURIComponent(semesterParam)}&E=${encodeURIComponent(sessionParam)}&R=${rollNo}&T=${examType}`;
-    } else {
-        url = `https://csvtu.digivarsity.online/WebApp/AdmitCard/AdmitCard.aspx?S=${encodeURIComponent(semesterParam)}&E=${encodeURIComponent(sessionParam)}&R=${rollNo}&T=${examType}`;
+    const url = new URL(`https://${officialHost}${pagePath}`);
+    url.search = new URLSearchParams({
+        S: semesterParam,
+        E: sessionParam,
+        R: rollNo,
+        T: examType,
+    }).toString();
+
+    if (url.protocol !== "https:" || url.hostname !== officialHost) {
+        securityStatus.textContent = "Blocked unsafe redirect.";
+        return;
     }
 
-    window.open(url, "_blank", "noopener,noreferrer");
+    securityStatus.textContent = "Opening verified official CSVTU page...";
+    window.open(url.toString(), "_blank", "noopener,noreferrer");
 });

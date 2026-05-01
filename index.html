@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="no-referrer">
 <title>CSVTU Student Portal</title>
 
 <link rel="stylesheet" href="style.css">
@@ -79,6 +81,7 @@
     </div>
 
     <button id="openBtn">Open Official Page</button>
+    <small id="securityStatus" role="status"></small>
 
     <div class="footer-text">
         Redirects to official CSVTU website
