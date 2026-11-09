@@ -24,9 +24,9 @@
 
     <div class="form-group">
         <label for="studentSearch" class="required">Student Name</label>
-        <div class="datalist-wrapper">
-            <input type="text" id="studentSearch" list="studentList" placeholder="Search student name" autocomplete="off">
-            <datalist id="studentList"></datalist>
+        <div class="autocomplete-wrapper">
+            <input type="text" id="studentSearch" placeholder="Search student name" autocomplete="off" aria-autocomplete="list" aria-controls="studentList" aria-expanded="false">
+            <ul id="studentList" class="autocomplete-dropdown" role="listbox"></ul>
         </div>
         <small id="studentStatus" aria-live="polite">Loading student list...</small>
     </div>
