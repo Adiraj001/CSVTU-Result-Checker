@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="no-referrer">
 <title>CSVTU Student Portal</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,20 +23,22 @@
     </div>
 
     <div class="form-group">
-        <label for="studentSearch">Student Name</label>
-        <input type="text" id="studentSearch" list="studentList" placeholder="Search student name">
-        <datalist id="studentList"></datalist>
-        <small id="studentStatus">Loading student list...</small>
+        <label for="studentSearch" class="required">Student Name</label>
+        <div class="datalist-wrapper">
+            <input type="text" id="studentSearch" list="studentList" placeholder="Search student name" autocomplete="off">
+            <datalist id="studentList"></datalist>
+        </div>
+        <small id="studentStatus" aria-live="polite">Loading student list...</small>
     </div>
 
     <div class="form-group">
-        <label for="rollNo">Roll Number</label>
-        <input type="text" id="rollNo" placeholder="Enter 12-digit Roll No" maxlength="12">
+        <label for="rollNo" class="required">Roll Number</label>
+        <input type="text" id="rollNo" placeholder="Enter 12-digit Roll No" maxlength="12" pattern="\d{12}" required>
     </div>
 
     <div class="form-group">
-        <label for="action">Action</label>
-        <select id="action">
+        <label for="action" class="required">Action</label>
+        <select id="action" required>
             <option value="">Select</option>
             <option value="result">Result</option>
             <option value="admit">Admit Card</option>
@@ -41,8 +46,8 @@
     </div>
 
     <div class="form-group">
-        <label for="examType">Exam Type</label>
-        <select id="examType">
+        <label for="examType" class="required">Exam Type</label>
+        <select id="examType" required>
             <option value="Regular">Regular</option>
             <option value="RTRV">RTRV</option>
             <option value="Backlog">Backlog</option>
@@ -50,8 +55,8 @@
     </div>
 
     <div class="form-group">
-        <label for="semester">Semester</label>
-        <select id="semester">
+        <label for="semester" class="required">Semester</label>
+        <select id="semester" required>
             <option value="">Select Semester</option>
             <option value="1">1st</option>
             <option value="2">2nd</option>
@@ -65,18 +70,17 @@
     </div>
 
     <div class="form-group">
-        <label for="examMonth">Exam Month</label>
-   <select id="examMonth">
+        <label for="examMonth" class="required">Exam Month</label>
+        <select id="examMonth" required>
             <option value="" disabled selected>Select Exam Month</option>
-        <option value="NOV-DEC">Nov&ndash;Dec</option>
-        <option value="APR-MAY">Apr&ndash;May</option>
-   </select>
-
+            <option value="NOV-DEC">Nov&ndash;Dec</option>
+            <option value="APR-MAY">Apr&ndash;May</option>
+        </select>
     </div>
 
     <div class="form-group">
-        <label for="examYear">Exam Year</label>
-        <select id="examYear">
+        <label for="examYear" class="required">Exam Year</label>
+        <select id="examYear" required>
             <option value="">Select Year</option>
         </select>
     </div>
